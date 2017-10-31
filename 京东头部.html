@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			.clearfix:after{
+				content: " ";
+				height: 0;
+				display: block;
+				clear: both;
+			}
+
+			.clearfix {
+				zoom: 1;
+			}
+			
+			/*京东广告栏部分*/
+			.top-banner {
+				width: 100%;
+				height: 80px;
+				background-color: #ff9324;
+				opacity: 1;
+			}
+			
+			.w{
+				width: 80%;
+				/*height: 80px;*/
+				/*background-color: pink;*/
+				margin: 0 auto;
+			}
+			
+			.banner {
+				position: relative;
+				background: url(../img/banner.png) no-repeat;
+				height: 80px;
+				
+			}
+			
+			.banner a {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				background-color: #FFFFFF;
+				top: 10px;
+				right: 10px;
+				text-align: center;
+				line-height: 20px;
+				color: #000;
+				text-decoration: none;
+			}
+			
+			.nav {
+				height: 20px;
+				background-color: #ccc;
+			}
+			
+			.nav ul {
+				list-style: none;
+				float: right;
+				margin-right: 40px;
+			}
+			
+			.nav li{
+				float: left;
+				width:80px;
+				height: 14px;
+				margin-top: 2px;
+				border-right: 1px solid #000;
+				text-align: center;
+				font-size: 12px;
+				
+				
+			}
+			
+			.nav a {
+				text-decoration: none;
+				color: #000000;
+			}
+			
+			/*.list span {
+				margin-left: 20px;
+			}*/
+			
+			.special {
+				float: left;
+				height: 100%;
+				/*margin-left: 80px;*/
+				font: 500 12px/20px "simsun";
+				line-height: 20px;
+			}
+			.search {
+				height: 160px;
+				
+			}
+			
+			#logo {
+				float: left;
+				width: 180px;
+				height: 150px;
+				background: url(../img/logo.png) no-repeat center;
+			}
+		
+			.search input {
+				width: 515px;
+				height: 32px;
+				border: 1px solid red;
+				margin-left: 100px;
+				margin-top: 50px;
+				color: #CCCCCC;
+				/*padding-left: 3px;*/
+				
+			}
+			
+			.shuru {
+				padding-left: 3px;
+			}
+			
+			/*.search-tab {
+				width: 600px;
+				height: 50px;
+			}*/
+			
+			#biger {
+				margin-top: 50px;
+				margin-right: 248px;
+				float: right;
+				left: 0;
+				top: 0;
+				width: 44px;
+				height: 35px;
+				background: url(../img/bigger.png) no-repeat;
+				background-color: rgba(52,83,145);
+			}
+			
+			.list-nav {
+				list-style: none;
+				margin-left: 280px;
+				margin-top: 6px;
+			}
+			
+			.items {
+				float: left;
+				font-size: 12px;
+				margin-right: 5px;
+				
+			}
+			
+			.items a {
+				text-decoration: none;
+				color: #CCCCCC;
+			} 
+			
+			.items a:hover {
+				color: red;
+			}
+			
+			.items .special-list {
+				color: darkred;
+				font-size: 12px;
+			}
+			#erweima {
+				float: right;
+				/*top: 100px;
+				right: 137px;
+				cursor: pointer;*/
+				width: 70px;
+				height: 70px;
+				margin-top: -90px;
+			}
+			
+			.erweima-hi {
+				float: right;
+				margin-right: 70px;
+				margin-top: -90px;
+				display: none;
+			}
+			
+			.show {
+				/*z-index: 2;*/
+				display: block;
+			}
+			
+			.hide {
+				display: none;
+			}
+			.slide-nav {
+				list-style: none;
+				float: left;
+				margin-top: 20px;
+				margin-left: 30px;
+			}
+			
+			.slide-nav li {
+				float: left;
+			/*	margin-right: 30px;*/
+				width: 80px;
+				height: 21px;
+				text-align: center;
+				
+			}
+			
+			.special-item {
+				border-right: 1px solid #CCCCCC;
+			}
+			
+			.slide-nav a {
+				text-decoration: none;
+				color: #000000;
+				font-weight: bold;
+			}
+			
+			.slide-nav a:hover {
+				color: darkred;
+			}
+			
+			.all {
+				width: 790px;
+				height: 340px;
+				margin-left: 320px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.ad ul {
+				width: 4800px;
+				list-style: none;
+				position: absolute;
+			}
+			
+			.ad-list .ad-item {
+				float: left;
+			}
+/*	/*	/*	/*
+			table {
+				width: 300px;
+				margin: 100px auto;
+			}
+			
+			td {
+				text-align: center;
+			}
+		
+			input {
+				width: 40px;
+			}
+			
+			#thead {
+				background-color: aquamarine;
+			}
+		
+			#tbody {
+				background-color: lightgrey;
+			}*/
+		</style>
+		
+		<script>
+			window.onload=function(){
+//				//需求：当thead上面的方框选定了之后，tbody的方框全部都要选定，反之，当thead上面的方框取消之后，tbody的方框同时全部取消
+//				
+//				//步骤：1.获取事件源和相关元素
+//				var top=document.getElementById("top");
+//				var tbody=document.getElementById("tbody");
+//				var bottomArr=tbody.getElementsByTagName("input");
+//				
+//				//循环给下面的每一个按钮绑定事件
+//				
+//					top.onclick=function (){
+//						//即下面所有的按钮的开关状态和上面的按钮的一样
+//					for(var i=0;i<bottomArr.length;i++)	{
+//						bottomArr[i].checked=this.checked;
+//					
+//				}
+//			}
+
+
+			//需求：当鼠标滑到nav上时，背景色和字体颜色改变
+			var nav=document.getElementsByClassName("nav")[0];
+			var list=document.getElementsByClassName("list")[0];
+			var aArr=list.getElementsByTagName("a");
+			
+			//高级高亮显示，先设置一个计数器color，记住鼠标放入a标签之前的背景色，然后等鼠标移开之后再把原来的背景色，赋值给他
+			for(var i=0;i<aArr.length;i++){
+				var color="";
+				aArr[i].onmouseover=function (){
+					color=this.style.backgroundColor;
+					this.style.backgroundColor="#fff";
+				}
+				aArr[i].onmouseout=function (){
+					this.style.backgroundColor=color;
+				}
+			}
+			
+			
+//			//显示和隐藏二维码
+			var erweima=document.getElementById("erweima");
+			var erweimaHi=document.getElementsByClassName("erweima-hi")[0];
+			
+			erweima.onmouseover=function (){
+				erweimaHi.className="erweima-hi show";
+			}
+//			
+			erweima.onmouseout=function (){
+				erweimaHi.className="erweima hide";
+			}
+			
+			//需求：点击关闭京东广告栏
+			var banner=document.getElementsByClassName("banner")[0];
+			var a=banner.getElementsByTagName("a")[0];
+			var topBaner=document.getElementsByClassName("top-banner")[0];
+			var timer=null;
+			
+			
+			a.onclick=function (){
+			
+			timer=setInterval(function(){
+				topBaner.style.opacity-=0.1;
+				if(topBaner.style.opacity<0){
+					topBaner.style.display="none";
+					clearInterval(timer);
+			    }
+			},100);
+			
+		
+		}
+			
+		//点击搜索栏，如果盒子里面的内容是母婴囤货日 疯狂满减，那么一点击，盒子里面内容立刻不见，如果不是的话，那么一点击不会不见
+		//焦点事件和失去焦点事件
+		
+		var shuru=document.getElementsByClassName("shuru")[0];
+		
+		shuru.onfocus=function (){
+			if(shuru.value==="母婴囤货日 疯狂满减"){
+				shuru.value="";
+				shuru.style.color="#000000";
+			}
+		}
+		
+		shuru.onblur=function (){
+			if(shuru.value===""){
+				shuru.value="母婴囤货日 疯狂满减"
+				shuru.style.color="#CCCCCC";
+			}
+		}
+		
+}
+
+		</script>
+		
+		
+		
+	</head>
+	<body>
+		
+		<!--京东广告栏-->
+		<div class="top-banner">
+			<div class="w banner">
+				<a href="#">x</a>
+			</div>
+		</div>
+		<div class="w nav">
+			<span class="special">北京</span>
+			<ul class="list">
+				<li><a href="#">你好，请登录</a></li>
+				<li><a href="#">免费注册</a></li> 
+				<li><a href="#">我的订单</a></li>
+				<li><a href="#">我的京东</a></li>
+				<li><a href="#">京东会员</a></li>
+				<li><a href="#">企业采购</a></li>
+				<li><a href="#">客户服务</a></li>
+				<li><a href="#">网站导航</a></li>
+				<li><a href="#">手机京东</a></li>
+			</ul>
+		</div>
+		
+		
+		<!--京东搜索栏-->
+		<div class="w search">
+			<a id="logo" href="#"></a>
+			<div class="search-tab">
+			 <input type="text" value="母婴囤货日 疯狂满减"/ class="shuru">
+				<a href="#" id="biger" class="clearfix"></a>
+			</div>
+			<ul class="list-nav">
+				
+				<li class="items"><a href="#" class="special-list">家电预约</a></li>
+				<li class="items"><a href="#">300减200</a></li>
+				<li class="items"><a href="#">兽药199-30</a></li>
+				<li class="items"><a href="#">5折嗨购</a></li>
+				<li class="items"><a href="#">亿元礼券</a></li>
+				<li class="items"><a href="#">润本蚊香液</a></li>
+				<li class="items"><a href="#">足浴盆木桶</a></li>
+				<li class="items"><a href="#">399减100</a></li>
+			</ul>
+			<a href="#" id="erweima" class="clearfix">
+				<img src="../img/erweima1.png" width="70" height="70"/>
+			</a>
+			<div class="erweima-hi clearfix" >
+				<img src="../img/erweima1.png" width="100" height="100"/>
+				
+			</div>
+			<ul class="slide-nav clearfix">
+				<li><a href="#">秒杀</a></li>
+				<li><a href="#">优惠券</a></li>
+				<li><a href="#">闪购</a></li>
+				<li class="special-item"><a href="#">拍卖</a></li>
+				<li><a href="#">服装城</a></li>
+				<li><a href="#">京东超市</a></li>
+				<li><a href="#">生鲜</a></li>
+				<li class="special-item">全球购</a></li>
+				<li><a href="#">京东金融</a></li>
+			</ul>
+		
+		
+		</div>
+		
+		<!--京东滚动广告图-->
+		<div class="all">
+			<div class="ad">
+				<ul class="ad-list">
+					<li class="ad-item"><img src="../img/ad1.jpg"></li>
+					<li class="ad-item"><img src="../img/ad2.jpg"></li>
+					<li class="ad-item"><img src="../img/ad4.jpg"></li>
+					<li class="ad-item"><img src="../img/ad5.jpg"></li>
+					<li class="ad-item"><img src="../img/ad6.jpg"></li>
+					<li class="ad-item"><img src="../img/ad7.jpg"></li>
+				</ul>
+				<ol>
+					
+				</ol>
+			</div>
+			<div class="adLeftRight">
+				<span class="adLeft"></span>
+				<span class="adRight"></span>
+			</div>
+		</div>
+		
+		<!--表格部分
+		
+		<table cellpadding="0" cellspacing="0" border="1">
+			<thead id="thead">
+				<tr>
+					<td><input type="checkbox" id="top"></td>
+					<th>菜名</th>
+					<th>饭店</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>土豆丝</td>
+					<td>田师傅家</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>番茄鸡蛋汤</td>
+					<td>王师傅家</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>麻婆豆腐</td>
+					<td>陈师傅家</td>
+				</tr>
+			</tbody>
+		</table>-->
+	</body>
+</html>
